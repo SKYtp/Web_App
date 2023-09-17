@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <div id="maincontainer"></div>
+        <script>
+            var mainC = document.getElementById("maincontainer");
+            //top head
+            var top_head = document.createElement("h2");
+            top_head.innerHTML = "Exercise 04: JavaScript&DOM";
+            mainC.appendChild(top_head);
+            //time button
+            var time_div = document.createElement("div");
+            var time_Button = document.createElement("button");
+            time_div.appendChild(time_Button);
+            time_Button.setAttribute("type","button");
+            time_Button.textContent = "Click me to display Date and Time"
+            mainC.appendChild(time_div);
+            
+            let time_button2 = document.createElement("button");
+            time_button2.textContent = "time na ja";
+            time_button2.style.visibility = "hidden";
+            time_button2.style.display = "none";
+            time_div.appendChild(time_button2);
+
+            var w = new Worker("64010792.js");
+            var time_check = false;
+            var time_count = 0;
+            var time_style;
+            time_Button.onclick = function(){
+                if(time_Button.style.position == "fixed"){
+                    time_Button.style.removeProperty("position");
+                    time_Button.style.removeProperty("top");
+                    time_Button.style.removeProperty("right");
+                    time_button2.style.display = "none";
+                    w.postMessage(false);
+                }
+                else{
+                    time_Button.style.position = "fixed";
+                    time_Button.style.top = "0";
+                    time_Button.style.right = "0";
+                    time_button2.style.display = "block";
+                    w.postMessage(true);
+                }
+            };
+            
+            //Listener
+ 
+            w.addEventListener('message', function(e) {
+                time_style = e.data;
+                time_Button.textContent = time_style[0];
+                time_Button.style.color = time_style[1];
+                time_Button.style.backgroundColor = time_style[2];
+                time_Button.style.borderBlockColor = time_style[3];
+            });
+            //personal info
+            var personal_info = document.createElement("a");
+            personal_info.innerHTML = "Personal Info";
+            personal_info.setAttribute("href","#");
+            personal_info.style.color = "#FFB3FF";
+            var personal_info_p = document.createElement("p");
+            personal_info_p.appendChild(personal_info)
+            var personal_ul = document.createElement("ul");
+            let li_top1 = document.createElement("li");
+            let li_top2 = document.createElement("li");
+            let li_top3 = document.createElement("li");
+            li_top1.innerHTML = "Wasan Udomtanasub, 64010792";
+            li_top2.innerHTML = "Subject: WEB APPLICATION DEVELOPMENT";
+            li_top3.innerHTML = "Semester: 2";
+            personal_ul.appendChild(li_top1);
+            personal_ul.appendChild(li_top2);
+            personal_ul.appendChild(li_top3);
+            personal_ul.style.display = "none";
+            mainC.appendChild(personal_info_p);
+            mainC.appendChild(personal_ul);
+
+            function click_personal(){
+                if(personal_ul.style.display == "none"){
+                    personal_ul.style.display = "block";
+                }
+                else{
+                    personal_ul.style.display = "none";
+                }
+            }
+            personal_info.setAttribute("onclick","click_personal()");
+            
+            personal_info.addEventListener('mouseover', function handleMouseOver() {
+                personal_info.style.color = "#0000FF";
+                personal_info.style.backgroundColor = "yellow";
+            });
+              
+            personal_info.addEventListener('mouseout', function handleMouseOut() {
+                personal_info.style.color = "#FFB3FF";
+                personal_info.style.backgroundColor = "white";
+            });
+
+            //snapshot
+            var snap_shots = document.createElement("h1")
+            snap_shots.innerHTML = "Snapshots";
+            mainC.appendChild(snap_shots);
+            var snapshot_ul = document.createElement("ul");
+
+            let li_snap1 = document.createElement("li");
+            let li_snap2 = document.createElement("li");
+            let li_snap3 = document.createElement("li");
+            let li_snap4 = document.createElement("li");
+
+            let a_snap1 = document.createElement("a");
+            let a_snap2 = document.createElement("a");
+            let a_snap3 = document.createElement("a");
+            let a_snap4 = document.createElement("a");
+
+            a_snap1.href = "#";
+            a_snap2.href = "#";
+            a_snap3.href = "#";
+            a_snap4.href = "#";
+            
+            a_snap1.style.color = "#0000FF";
+            a_snap2.style.color = "#0000FF";
+            a_snap3.style.color = "#0000FF";
+            a_snap4.style.color = "#0000FF";
+
+            a_snap1.innerHTML = "Fireworks";
+            a_snap2.innerHTML = "Crest";
+            a_snap3.innerHTML = "Action";
+            a_snap4.innerHTML = "Buffalo";
+
+            li_snap1.appendChild(a_snap1);
+            li_snap2.appendChild(a_snap2);
+            li_snap3.appendChild(a_snap3);
+            li_snap4.appendChild(a_snap4);
+
+            snapshot_ul.appendChild(li_snap1);
+            snapshot_ul.appendChild(li_snap2);
+            snapshot_ul.appendChild(li_snap3);
+            snapshot_ul.appendChild(li_snap4);
+
+            mainC.appendChild(snapshot_ul);
+
+            // pic
+            let pic_main =  document.createElement("img");
+            pic_main.alt = "main";
+            pic_main.src = "https://sv1.picz.in.th/images/2023/02/15/L6GhaR.jpg";
+            mainC.appendChild(pic_main);
+            pic_main.style.maxHeight = "300px";
+            a_snap1.onclick = function(){
+                pic_main.src = "https://sv1.picz.in.th/images/2023/02/15/L6JlgZ.jpg";
+                pic_main.alt = "Fireworks";
+            };
+            a_snap2.onclick = function(){
+                pic_main.src = "https://sv1.picz.in.th/images/2023/02/15/L6L6La.jpg";
+                pic_main.alt = "Crest";
+            };
+            a_snap3.onclick = function(){
+                pic_main.src = "https://www.shutterstock.com/image-vector/football-soccer-players-player-illustration-600w-2200688545.jpg";
+                pic_main.alt = "Action";
+            };
+            a_snap4.onclick = function(){
+                pic_main.src = "https://www.shutterstock.com/image-vector/cute-buffalo-cartoon-vector-illustration-600w-2036907032.jpg";
+                pic_main.alt = "Buffalo";
+            };
+        </script>
+    </body>
+</html>

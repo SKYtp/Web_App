@@ -1,0 +1,57 @@
+.App {
+  text-align: center;
+  background-color: #6a686a;
+}
+
+.App-header {
+  background-color: #6a686a;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fbcc15;
+
+}
+.mainBox{
+  text-align: left;
+  color: black;
+  background-color: #fdebd7;
+  border: 3px solid black;
+  border-radius: 13px 13px 13px 13px;
+  padding: 10px;
+  padding-bottom: 25px;
+  max-width: 750px;
+  position: relative;
+}
+.flex_inMainBox{
+  display: flex;
+  justify-content: space-between; 
+  align-items: flex-start;
+}
+.voteAndButton{
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  margin-top: -7px;
+}
+.mCount{
+  color: #8f3eef;
+  font-weight: 700;
+  font-size: 28px;
+  border: 3px solid #593068;
+  border-radius: 13px 13px 13px 13px;
+  background-color: #78e300;
+  padding: 5px;
+  margin-left: 12px;
+  margin-right: 12px;
+}
+
+.main-button{
+  padding: 7px;
+}
+img{
+  margin-top: 10px;
+  margin-right: 10px;
+  max-height: 150px;
+}
